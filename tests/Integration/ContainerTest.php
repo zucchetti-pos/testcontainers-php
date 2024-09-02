@@ -34,6 +34,7 @@ class ContainerTest extends TestCase
 
         $databases = $query->fetchAll(\PDO::FETCH_COLUMN);
 
+        $this->assertNotFalse($databases);
         $this->assertContains('foo', $databases);
     }
 
@@ -57,6 +58,7 @@ class ContainerTest extends TestCase
 
         $databases = $query->fetchAll(\PDO::FETCH_COLUMN);
 
+        $this->assertNotFalse($databases);
         $this->assertContains('foo', $databases);
     }
 
@@ -120,6 +122,7 @@ class ContainerTest extends TestCase
 
         $databases = $query->fetchAll(\PDO::FETCH_COLUMN);
 
+        $this->assertNotFalse($databases);
         $this->assertContains('foo', $databases);
     }
 }
