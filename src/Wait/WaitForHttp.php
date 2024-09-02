@@ -22,9 +22,11 @@ class WaitForHttp implements WaitInterface
     private string $method = 'GET';
     private string $path = '/';
     private int $statusCode = 200;
+    private int $port;
 
-    public function __construct(private int $port)
+    public function __construct(int $port)
     {
+        $this->port = $port;
     }
 
     public static function make(int $port): self
@@ -58,7 +60,7 @@ class WaitForHttp implements WaitInterface
 
     public function wait(string $id): void
     {
-        $containerAddress = self::dockerContainerAddress(containerId: $id);
+        $containerAddress = self::dockerContainerAddress($id);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, sprintf('http://%s:%d%s', $containerAddress, $this->port, $this->path));
