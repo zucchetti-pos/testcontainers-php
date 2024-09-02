@@ -9,8 +9,13 @@ use Testcontainers\Exception\ContainerNotReadyException;
 
 class WaitForLog implements WaitInterface
 {
-    public function __construct(private string $message, private bool $enableRegex = false)
+    private string $message;
+    private bool $enableRegex = false;
+
+    public function __construct(string $message, bool $enableRegex = false)
     {
+        $this->message = $message;
+        $this->enableRegex = $enableRegex;
     }
 
     public function wait(string $id): void

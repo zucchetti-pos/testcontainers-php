@@ -7,7 +7,7 @@ namespace Testcontainers\Container;
 use Symfony\Component\Process\Process;
 use Testcontainers\Exception\ContainerNotReadyException;
 use Testcontainers\Registry;
-use Testcontainers\Trait\DockerContainerAwareTrait;
+use Testcontainers\Traits\DockerContainerAwareTrait;
 use Testcontainers\Wait\WaitForNothing;
 use Testcontainers\Wait\WaitInterface;
 
@@ -59,8 +59,11 @@ class Container
      */
     private array $ports = [];
 
-    protected function __construct(private string $image)
+    private string $image;
+
+    protected function __construct(string $image)
     {
+        $this->image = $image;
         $this->wait = new WaitForNothing();
     }
 
@@ -301,9 +304,9 @@ class Container
     public function getAddress(): string
     {
         return self::dockerContainerAddress(
-            containerId: $this->id,
-            networkName: $this->network,
-            inspectedData: $this->inspectedData
+            $this->id,
+            $this->network,
+            $this->inspectedData
         );
     }
 }

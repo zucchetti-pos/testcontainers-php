@@ -11,7 +11,7 @@ use Symfony\Component\Process\Process;
 use Testcontainers\Container\Container;
 use Testcontainers\Exception\ContainerNotReadyException;
 use Testcontainers\Registry;
-use Testcontainers\Trait\DockerContainerAwareTrait;
+use Testcontainers\Traits\DockerContainerAwareTrait;
 use Testcontainers\Wait\WaitForExec;
 use Testcontainers\Wait\WaitForHealthCheck;
 use Testcontainers\Wait\WaitForHttp;

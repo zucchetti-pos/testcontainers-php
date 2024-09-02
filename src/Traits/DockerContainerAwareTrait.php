@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Testcontainers\Trait;
+namespace Testcontainers\Traits;
 
 use JsonException;
 use Symfony\Component\Process\Process;
@@ -67,7 +67,7 @@ trait DockerContainerAwareTrait
      *
      * @throws JsonException
      */
-    private static function dockerNetworkFind(string $networkName): array|false
+    private static function dockerNetworkFind(string $networkName)
     {
         $process = new Process(['docker', 'network', 'ls', '--format', 'json', '--filter', 'name=' . $networkName]);
         $process->mustRun();

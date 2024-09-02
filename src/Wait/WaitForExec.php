@@ -10,11 +10,17 @@ use Testcontainers\Exception\ContainerNotReadyException;
 
 class WaitForExec implements WaitInterface
 {
+    /** @var array<array-key, string> */
+    private array $command = [];
+    private ?Closure $checkFunction = null;
+
     /**
      * @param array<string> $command
      */
-    public function __construct(private array $command, private ?Closure $checkFunction = null)
+    public function __construct(array $command, ?Closure $checkFunction = null)
     {
+        $this->command = $command;
+        $this->checkFunction = $checkFunction;
     }
 
     public function wait(string $id): void

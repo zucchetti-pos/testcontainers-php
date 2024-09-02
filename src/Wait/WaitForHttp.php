@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Testcontainers\Wait;
 
 use Testcontainers\Exception\ContainerNotReadyException;
-use Testcontainers\Trait\DockerContainerAwareTrait;
+use Testcontainers\Traits\DockerContainerAwareTrait;
 
 class WaitForHttp implements WaitInterface
 {
